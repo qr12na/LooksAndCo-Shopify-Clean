@@ -116,7 +116,6 @@
    ========================================================= */
 
 @media screen and (min-width: 750px) {
-  /* Higher specificity intentionally overrides the theme's later grid rules. */
   body.looksco-home main .ui-test-product-list .resource-list--grid {
     grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     justify-content: start !important;
@@ -165,5 +164,53 @@
 
   body.looksco-home main .ui-test-product-list .product-card .card-gallery {
     aspect-ratio: 4 / 3 !important;
+  }
+}
+
+/* =========================================================
+   Product-list cards — keep cards compact even when there are
+   only 1–4 products. They should occupy their own columns rather
+   than stretch to fill the entire row.
+   ========================================================= */
+
+@media screen and (min-width: 750px) {
+  .ui-test-product-list .resource-list--grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    justify-content: start !important;
+    align-items: start !important;
+    column-gap: 18px !important;
+    row-gap: 28px !important;
+  }
+
+  .ui-test-product-list .resource-list--grid .resource-list__item {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 270px !important;
+    justify-self: start !important;
+  }
+
+  .ui-test-product-list .resource-list--grid .product-card {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .ui-test-product-list .resource-list--grid .product-card .card-gallery {
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .ui-test-product-list .resource-list--grid .product-card .card-gallery :is(img, video) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .ui-test-product-list .resource-list--grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-content: start !important;
   }
 }
