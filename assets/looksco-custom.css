@@ -111,22 +111,59 @@
   }
 }
 
-/* Homepage product grid: keep cards compact and fill from left to right. */
+/* =========================================================
+   Homepage product cards — compact five-column layout
+   ========================================================= */
+
 @media screen and (min-width: 750px) {
-  body.looksco-home .ui-test-product-list .resource-list--grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  /* Higher specificity intentionally overrides the theme's later grid rules. */
+  body.looksco-home main .ui-test-product-list .resource-list--grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     justify-content: start !important;
-    align-items: start;
+    align-items: start !important;
+    width: 100% !important;
     column-gap: 18px !important;
     row-gap: 28px !important;
+  }
+
+  body.looksco-home main .ui-test-product-list .resource-list__item,
+  body.looksco-home main .ui-test-product-list .product-card {
+    width: 100% !important;
+    max-width: 270px !important;
+    min-width: 0 !important;
+    justify-self: start !important;
+  }
+
+  body.looksco-home main .ui-test-product-list .product-card .card-gallery {
+    aspect-ratio: 4 / 3 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  body.looksco-home main .ui-test-product-list .product-card .card-gallery :is(img, video) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body.looksco-home main .ui-test-product-list .product-card {
+    border-radius: 14px !important;
+  }
+
+  body.looksco-home main .ui-test-product-list .product-card :is(.card-gallery, .product-card__link, img) {
+    border-radius: 12px !important;
   }
 }
 
 @media screen and (max-width: 749px) {
-  body.looksco-home .ui-test-product-list .resource-list--grid {
+  body.looksco-home main .ui-test-product-list .resource-list--grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     justify-content: start !important;
     column-gap: 12px !important;
     row-gap: 22px !important;
+  }
+
+  body.looksco-home main .ui-test-product-list .product-card .card-gallery {
+    aspect-ratio: 4 / 3 !important;
   }
 }
