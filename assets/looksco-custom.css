@@ -1,71 +1,112 @@
-/* Looks&Co custom glass header */
+/* Looks&Co custom header styling */
 
-/* Give the header a clean, floating feel over the hero. */
-.header {
+/* Keep the announcement strip as the clean, straight bar above the hero. */
+.announcement-bar {
+  background: #fff !important;
+  color: #111 !important;
+  border-bottom: 2px solid #111 !important;
+  border-radius: 0 !important;
+}
+
+.announcement-bar :is(a, button, span, p) {
+  color: #111 !important;
+}
+
+/* Put the main navigation over the hero like the reference header. */
+#header-component {
   position: relative;
-  z-index: 20;
+  z-index: 30;
 }
 
-/* Top navigation row: translucent black glass pill, matching the reference style. */
-.header__row--top {
+#header-component .header__row--top {
   background: transparent !important;
-  border-bottom: 0 !important;
-  padding: 10px 10px 8px !important;
+  border: 0 !important;
+  padding: 12px 10px !important;
 }
 
-.header__row--top > * {
-  background: rgba(0, 0, 0, 0.42) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
-  -webkit-backdrop-filter: blur(14px) saturate(135%);
-  backdrop-filter: blur(14px) saturate(135%);
+#header-component .header__columns {
+  align-items: center;
 }
 
-/* White typography/icons inside the glass navigation. */
-.header__row--top :is(a, button, summary, span, svg) {
+/* Left and right groups become separate glossy glass pills. */
+#header-component .header__row--top .header__column--left,
+#header-component .header__row--top .header__column--right {
+  background: rgba(0, 0, 0, 0.48) !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  backdrop-filter: blur(16px) saturate(135%);
+}
+
+/* Left group: logo + navigation. */
+#header-component .header__row--top .header__column--left {
+  padding: 4px 8px !important;
+}
+
+#header-component .header__row--top .header__column--left :is(a, button, span) {
   color: #fff !important;
 }
 
-.header__row--top svg {
+#header-component .header__row--top .header__column--left svg {
+  color: #fff !important;
   fill: currentColor;
   stroke: currentColor;
 }
 
-/* Navigation links become individual translucent tabs. */
-.header__row--top a {
-  border-radius: 12px;
-  transition: background-color 180ms ease, transform 180ms ease;
+/* Navigation links look like subtle individual tabs. */
+#header-component .header__row--top .header__column--left .menu-list__link {
+  border-radius: 14px !important;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
-.header__row--top a:hover {
+#header-component .header__row--top .header__column--left .menu-list__link:hover {
   background: rgba(255, 255, 255, 0.14) !important;
   transform: translateY(-1px);
 }
 
-/* Make action controls feel like the round glass buttons in the reference. */
-.header__row--top :is(button, .header-actions__action) {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  border-radius: 14px !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 5px 16px rgba(0, 0, 0, 0.14) !important;
+/* Right group: search, account, cart etc. */
+#header-component .header__row--top .header__column--right {
+  gap: 7px !important;
+  padding: 4px 6px !important;
 }
 
-.header__row--top :is(button, .header-actions__action):hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+#header-component .header__row--top .header__column--right :is(button, .header-actions__action) {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.13) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 15px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
 }
 
-/* Keep the existing lower row clean and white for now. */
-.header__row--bottom {
-  background: rgb(255 255 255 / 94%) !important;
+#header-component .header__row--top .header__column--right :is(button, .header-actions__action):hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+#header-component .header__row--top .header__column--right svg {
+  color: #fff !important;
+  stroke: currentColor;
+}
+
+/* On the home page the navigation floats over the hero image. */
+@media screen and (min-width: 750px) {
+  #header-component {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 @media screen and (max-width: 749px) {
-  .header__row--top {
-    padding: 7px 7px 6px !important;
+  #header-component .header__row--top {
+    padding: 8px 7px !important;
   }
 
-  .header__row--top > * {
-    border-radius: 15px !important;
+  #header-component .header__row--top .header__column--left,
+  #header-component .header__row--top .header__column--right {
+    border-radius: 17px !important;
   }
 }
