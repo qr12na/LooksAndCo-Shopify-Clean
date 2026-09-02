@@ -42,29 +42,13 @@
   "
   {{ block.shopify_attributes }}
 >
-  {% liquid
-    assign logo_width = settings.logo_height | times: settings.logo.aspect_ratio | ceil
-    assign logo_width_mobile = settings.logo_height_mobile | times: settings.logo.aspect_ratio | ceil
-    assign inverse_logo_width = settings.logo_height | times: inverse_logo.aspect_ratio | ceil
-    assign inverse_logo_width_mobile = settings.logo_height_mobile | times: inverse_logo.aspect_ratio | ceil
-    assign logo_style = '--header-logo-image-width: ' | append: logo_width | append: 'px;' | append: '--header-logo-image-width-mobile: ' | append: logo_width_mobile | append: 'px; --header-logo-image-height: ' | append: settings.logo_height | append: 'px; --header-logo-image-height-mobile: ' | append: settings.logo_height_mobile | append: 'px;'
-    assign inverse_logo_style = '--header-logo-image-width: ' | append: inverse_logo_width | append: 'px;' | append: '--header-logo-image-width-mobile: ' | append: inverse_logo_width_mobile | append: 'px; --header-logo-image-height: ' | append: settings.logo_height | append: 'px; --header-logo-image-height-mobile: ' | append: settings.logo_height_mobile | append: 'px;'
-  %}
-
   <span
     {% if use_inverse_logo %}
       class="header-logo__solid-header-image-container"
     {% endif %}
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    <span class="header-logo__wordmark">{{ shop.name }}</span>
   </span>
 
   {% if use_inverse_logo %}
@@ -72,14 +56,7 @@
       class="header-logo__transparent-header-image-container"
       data-testid="header-logo-inverse"
     >
-      {% render 'image',
-        image: inverse_logo,
-        class: 'header-logo__image',
-        height: settings.logo_height,
-        alt_text_fallback: alt_text_fallback,
-        text_fallback: shop.name,
-        style: inverse_logo_style
-      %}
+      <span class="header-logo__wordmark">{{ shop.name }}</span>
     </span>
   {% endif %}
 </a>
@@ -122,48 +99,25 @@
     }
   }
 
-  .header-logo__image {
-    object-fit: contain;
-    height: var(--header-logo-image-height-mobile);
-    width: var(--header-logo-image-width-mobile);
-
-    @media screen and (min-width: 750px) {
-      height: var(--header-logo-image-height);
-      width: var(--header-logo-image-width);
-    }
-  }
-
-  .header-logo__solid-header-image-container {
-    display: var(--header-logo-display, block);
-  }
-
-  .header-logo__transparent-header-image-container {
-    display: var(--header-logo-inverse-display, none);
-  }
-
-  /* Looks&Co navigation wordmark: bold, crisp and sharp */
-  #header-component .header-logo {
-    --logo-font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-    font-family: var(--logo-font-family) !important;
-    font-weight: 800 !important;
-    font-size: 17px !important;
+  .header-logo__wordmark {
+    display: inline-block;
+    white-space: nowrap;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 25px !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    letter-spacing: -0.035em !important;
     line-height: 1 !important;
-    letter-spacing: -0.045em !important;
     color: #fff !important;
     -webkit-font-smoothing: antialiased !important;
-    text-rendering: geometricPrecision !important;
-  }
-
-  #header-component .header-logo__image {
-    transform: scaleX(0.98);
-    transform-origin: left center;
+    text-rendering: optimizeLegibility !important;
   }
 
   @media screen and (max-width: 749px) {
-    #header-component .header-logo {
-      font-size: 16px !important;
-      font-weight: 800 !important;
-      letter-spacing: -0.04em !important;
+    .header-logo__wordmark {
+      font-size: 22px !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.03em !important;
     }
   }
 {% endstylesheet %}
