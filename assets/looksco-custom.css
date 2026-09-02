@@ -316,3 +316,144 @@
 .ui-test-product-list .product-card :is(h3, h4) + p {
   display: none !important;
 }
+
+/* =========================================================
+   Looks&Co reference navigation — compact split glass pills
+   ========================================================= */
+
+@media screen and (min-width: 750px) {
+  #header-component .header__row--top {
+    padding: 19px 12px !important;
+  }
+
+  #header-component .header__columns {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  #header-component .header__row--top .header__column--left,
+  #header-component .header__row--top .header__column--right {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: max-content !important;
+    min-width: 0 !important;
+    height: 55px !important;
+    box-sizing: border-box !important;
+    background: rgba(58, 52, 45, 0.72) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    backdrop-filter: blur(14px) saturate(120%);
+  }
+
+  /* Left pill: logo + simple links, no individual button boxes. */
+  #header-component .header__row--top .header__column--left {
+    padding: 0 18px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #header-component .header__row--top .header__column--left :is(a, button, span) {
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+  }
+
+  #header-component .header__row--top .header__column--left .menu-list__link {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    padding: 0 10px !important;
+  }
+
+  #header-component .header__row--top .header__column--left .menu-list__link:hover {
+    background: transparent !important;
+    text-decoration: underline !important;
+    text-underline-offset: 5px !important;
+  }
+
+  /* Reference divider between brand and navigation. */
+  #header-component .header__row--top .header__column--left .menu-list__link:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-left: 8px !important;
+    padding-left: 20px !important;
+  }
+
+  /* Right pill: one continuous control with subtle dividers between icons. */
+  #header-component .header__row--top .header__column--right {
+    padding: 0 7px !important;
+    gap: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #header-component .header__row--top .header__column--right :is(button, .header-actions__action) {
+    width: 55px !important;
+    height: 53px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  #header-component .header__row--top .header__column--right :is(button, .header-actions__action) + :is(button, .header-actions__action) {
+    border-left: 1px solid rgba(255, 255, 255, 0.18) !important;
+  }
+
+  #header-component .header__row--top .header__column--right :is(button, .header-actions__action):hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  #header-component .header__row--top .header__column--right svg {
+    width: 21px !important;
+    height: 21px !important;
+    color: #fff !important;
+    stroke: currentColor !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #header-component .header__row--top {
+    padding: 9px 8px !important;
+  }
+
+  #header-component .header__columns {
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  #header-component .header__row--top .header__column--left,
+  #header-component .header__row--top .header__column--right {
+    height: 48px !important;
+    border-radius: 24px !important;
+  }
+
+  #header-component .header__row--top .header__column--left {
+    padding: 0 10px !important;
+  }
+
+  #header-component .header__row--top .header__column--right {
+    padding: 0 4px !important;
+    gap: 0 !important;
+  }
+
+  #header-component .header__row--top .header__column--right :is(button, .header-actions__action) {
+    width: 43px !important;
+    height: 46px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+}
