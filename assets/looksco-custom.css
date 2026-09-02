@@ -307,3 +307,12 @@
     font-size: 12px !important;
   }
 }
+
+/* =========================================================
+   Remove the duplicate plain product title shown underneath
+   the main product heading.
+   ========================================================= */
+
+.ui-test-product-list .product-card :is(h3, h4) + p {
+  display: none !important;
+}
