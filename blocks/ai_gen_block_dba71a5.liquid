@@ -1,0 +1,152 @@
+{% doc %}
+  @prompt
+    Create a custom CSS snippet block that fixes video overflow on the product page media gallery. The video element inside the media gallery should be constrained to its parent container and must not expand or overflow beyond its frame when playing. Apply CSS rules to ensure the video element has max-width: 100%, max-height: 100%, object-fit: contain or cover, and overflow: hidden on the media gallery container. Target the Horizon theme's product media gallery elements to prevent the video from breaking out of its boundaries during playback on desktop.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-fix-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  product-media-gallery,
+  .product__media-wrapper,
+  .product-media-container,
+  .product__media-list,
+  .product-single__media-wrapper {
+    overflow: hidden !important;
+  }
+
+  product-media-gallery .media,
+  product-media-gallery .product__media-item,
+  .product__media-wrapper .media,
+  .product-media-container .media {
+    overflow: hidden !important;
+    position: relative;
+  }
+
+  product-media-gallery video,
+  .product__media-wrapper video,
+  .product-media-container video,
+  .product__media-list video,
+  .product-single__media-wrapper video,
+  .media video,
+  deferred-media video {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: {{ block.settings.video_fit }} !important;
+    display: block !important;
+  }
+
+  deferred-media {
+    overflow: hidden !important;
+    display: block !important;
+  }
+
+  deferred-media template + * {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+
+  @media screen and (min-width: 750px) {
+    product-media-gallery video,
+    .product__media-wrapper video,
+    .product-media-container video {
+      object-fit: {{ block.settings.desktop_video_fit }} !important;
+    }
+  }
+
+  {% if block.settings.fix_aspect_ratio %}
+    product-media-gallery .media,
+    .product__media-wrapper .media,
+    .product-media-container .media {
+      aspect-ratio: {{ block.settings.aspect_ratio_width }} / {{ block.settings.aspect_ratio_height }};
+    }
+  {% endif %}
+{% endstyle %}
+
+<div class="ai-video-fix-{{ ai_gen_id }}" {{ block.shopify_attributes }}></div>
+
+{% schema %}
+{
+  "name": "Video overflow fix",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video display settings"
+    },
+    {
+      "type": "select",
+      "id": "video_fit",
+      "label": "Mobile video fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain (show full video)"
+        },
+        {
+          "value": "cover",
+          "label": "Cover (fill container)"
+        }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "select",
+      "id": "desktop_video_fit",
+      "label": "Desktop video fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain (show full video)"
+        },
+        {
+          "value": "cover",
+          "label": "Cover (fill container)"
+        }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "header",
+      "content": "Advanced settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "fix_aspect_ratio",
+      "label": "Enforce aspect ratio",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "aspect_ratio_width",
+      "label": "Aspect ratio width",
+      "min": 1,
+      "max": 21,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "aspect_ratio_height",
+      "label": "Aspect ratio height",
+      "min": 1,
+      "max": 21,
+      "step": 1,
+      "default": 9
+    },
+    {
+      "type": "paragraph",
+      "content": "This block applies CSS fixes to prevent product videos from overflowing their container. Add it once to your product template."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video overflow fix"
+    }
+  ]
+}
+{% endschema %}
