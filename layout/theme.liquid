@@ -249,6 +249,34 @@
           animation: none;
         }
       }
+
+      @media screen and (min-width: 750px) {
+        body.looksco-home .ui-test-product-list {
+          width: calc(100% - 48px) !important;
+          max-width: none !important;
+        }
+
+        body.looksco-home .ui-test-product-list .section-resource-list {
+          width: 100% !important;
+        }
+
+        body.looksco-home .resource-list--grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          width: 100%;
+          justify-content: stretch;
+        }
+
+        body.looksco-home .resource-list__item,
+        body.looksco-home .product-card {
+          width: 100%;
+        }
+
+        body.looksco-home footer {
+          width: calc(100% - 48px);
+          max-width: none;
+          box-sizing: border-box;
+        }
+      }
     </style>
 
     {% if request.design_mode %}
