@@ -140,6 +140,32 @@
   .header-logo__transparent-header-image-container {
     display: var(--header-logo-inverse-display, none);
   }
+
+  /* Looks&Co navigation wordmark: bold, crisp and sharp */
+  #header-component .header-logo {
+    --logo-font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--logo-font-family) !important;
+    font-weight: 800 !important;
+    font-size: 17px !important;
+    line-height: 1 !important;
+    letter-spacing: -0.045em !important;
+    color: #fff !important;
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: geometricPrecision !important;
+  }
+
+  #header-component .header-logo__image {
+    transform: scaleX(0.98);
+    transform-origin: left center;
+  }
+
+  @media screen and (max-width: 749px) {
+    #header-component .header-logo {
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.04em !important;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
