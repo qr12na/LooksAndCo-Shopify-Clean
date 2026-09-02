@@ -112,7 +112,7 @@
 }
 
 /* =========================================================
-   Homepage product cards — compact five-column layout
+   Homepage product cards — taller four-column layout
    ========================================================= */
 
 @media screen and (min-width: 750px) {
@@ -134,7 +134,7 @@
   }
 
   body.looksco-home main .ui-test-product-list .product-card .card-gallery {
-    aspect-ratio: 4 / 3 !important;
+    aspect-ratio: 4 / 5 !important;
     height: auto !important;
     overflow: hidden !important;
   }
@@ -163,7 +163,7 @@
   }
 
   body.looksco-home main .ui-test-product-list .product-card .card-gallery {
-    aspect-ratio: 4 / 3 !important;
+    aspect-ratio: 4 / 5 !important;
   }
 }
 
@@ -196,7 +196,7 @@
 
   .ui-test-product-list .resource-list--grid .product-card .card-gallery {
     width: 100% !important;
-    aspect-ratio: 4 / 3 !important;
+    aspect-ratio: 4 / 5 !important;
     height: auto !important;
     overflow: hidden !important;
   }
