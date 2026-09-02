@@ -124,30 +124,6 @@
       outline-offset: 3px;
     }
 
-    /* Straight white placeholder bar at the very top for the content we'll add later. */
-    body::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 48px;
-      box-sizing: border-box;
-      background: #fff;
-      border: 2px solid #111;
-      border-radius: 0;
-    }
-
-    @media screen and (max-width: 749px) {
-      .hero .button-custom--{{ block_id }} {
-        min-height: 44px;
-        padding: 10px 20px;
-        border-radius: 12px;
-      }
-
-      body::before {
-        height: 44px;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .hero .button-custom--{{ block_id }},
       .hero .button-custom--{{ block_id }}::before {
