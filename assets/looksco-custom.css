@@ -214,3 +214,96 @@
     justify-content: start !important;
   }
 }
+
+/* =========================================================
+   Looks&Co product-card typography — clean premium storefront
+   ========================================================= */
+
+.ui-test-product-list .product-card {
+  overflow: hidden !important;
+}
+
+/* Product title */
+.ui-test-product-list .product-card :is(.product-card__title, .card__heading, h3, h4) {
+  margin: 12px 0 6px !important;
+  padding: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: #161616 !important;
+  text-decoration: none !important;
+}
+
+.ui-test-product-list .product-card :is(.product-card__title, .card__heading, h3, h4) a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Keep long product names tidy instead of making cards wildly uneven. */
+.ui-test-product-list .product-card :is(.product-card__title, .card__heading, h3, h4) {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+}
+
+/* Product information area */
+.ui-test-product-list .product-card :is(.product-card__info, .card-information, .product-card__content) {
+  padding: 0 2px 12px !important;
+}
+
+/* Current/sale price */
+.ui-test-product-list .product-card :is(.price, .price-item--sale, .price-item--regular, .product-card__price) {
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.02em !important;
+  color: #111 !important;
+}
+
+/* Original price */
+.ui-test-product-list .product-card :is(.price__compare, .price-item--regular s, .price s, del) {
+  margin-left: 6px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #858585 !important;
+  text-decoration-thickness: 1.5px !important;
+}
+
+/* Discount/sale price arrangement */
+.ui-test-product-list .product-card .price {
+  display: flex !important;
+  align-items: baseline !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  margin-top: 4px !important;
+}
+
+/* Subtle hover lift for the whole card */
+@media screen and (min-width: 750px) {
+  .ui-test-product-list .product-card {
+    transition: transform 180ms ease, box-shadow 180ms ease !important;
+  }
+
+  .ui-test-product-list .product-card:hover {
+    transform: translateY(-3px) !important;
+  }
+}
+
+/* Mobile typography */
+@media screen and (max-width: 749px) {
+  .ui-test-product-list .product-card :is(.product-card__title, .card__heading, h3, h4) {
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    margin-top: 9px !important;
+  }
+
+  .ui-test-product-list .product-card :is(.price, .price-item--sale, .price-item--regular, .product-card__price) {
+    font-size: 17px !important;
+  }
+
+  .ui-test-product-list .product-card :is(.price__compare, .price-item--regular s, .price s, del) {
+    font-size: 12px !important;
+  }
+}
