@@ -1394,6 +1394,17 @@
     }
   }
 
+
+  @media screen and (min-width: 750px) {
+    #header-component .header__row--top .header__column--left {
+      position: static !important;
+    }
+
+    #header-component .header__row--top .header__column--right {
+      width: auto !important;
+    }
+  }
+
 {% endstylesheet %}
 
 {% unless request.design_mode %}
