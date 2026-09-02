@@ -136,6 +136,29 @@
         background: rgb(255 255 255 / 72%);
         box-shadow: 0 12px 34px rgb(41 31 18 / 8%), inset 0 1px 0 #fff;
       }
+
+      @media screen and (min-width: 750px) {
+        body.looksco-home .ui-test-product-list {
+          width: min(calc(100% - 48px), 1480px) !important;
+          max-width: none;
+        }
+
+        body.looksco-home .ui-test-product-list .section-resource-list {
+          width: 100% !important;
+          grid-template-columns: clamp(20px, 3vw, 48px) minmax(0, 1fr) clamp(20px, 3vw, 48px) !important;
+        }
+
+        body.looksco-home .resource-list--grid {
+          grid-template-columns: repeat(2, minmax(280px, 360px)) !important;
+          justify-content: center;
+        }
+      }
+
+      @media screen and (max-width: 749px) {
+        body.looksco-home .resource-list--grid {
+          grid-template-columns: minmax(0, 1fr) !important;
+        }
+      }
     </style>
 
     {% if request.design_mode %}
