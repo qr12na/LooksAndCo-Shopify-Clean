@@ -51,6 +51,11 @@
     @container resource-list (min-width: 750px) {
       grid-template-columns: repeat(var(--resource-list-columns-per-row), 1fr);
 
+      /* Two products should fill the available row instead of occupying tiny columns. */
+      &:has(.resource-list__item:first-child:nth-last-child(2)) {
+        --resource-list-columns-per-row: 2;
+      }
+
       &:has(.resource-list__item:first-child:nth-last-child(n + 9)) {
         --resource-list-columns-per-row: 5;
       }
@@ -92,5 +97,29 @@
     height: 100%;
     color: var(--color-foreground);
     text-decoration: none;
+  }
+
+  /* Keep the page scrollbar from creating the bright white strip at the edge. */
+  html,
+  .page-wrapper {
+    scrollbar-color: rgb(var(--color-foreground-rgb) / var(--opacity-30-60)) transparent;
+  }
+
+  html::-webkit-scrollbar,
+  .page-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track,
+  .page-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  .page-wrapper::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
   }
 {% endstylesheet %}
